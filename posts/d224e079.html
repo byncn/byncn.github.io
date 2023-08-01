@@ -1,0 +1,1763 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Redmi AC2100刷写Openwrt教程, HTML, CSS, JavaScript, JQuery, Vue.js, Blog......">
+    <meta name="description" content="前言​        此教程的书写基于 Redmi AC2100 路由器，并不保证其他路由器可用。推荐使用 Windows 10/11 系统。理论上对其他型号路由器也通用，不过需要改一下固件的型号。本教程参考了多位前辈的文档与教程。
+注意事">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MGDPSX2XB4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-MGDPSX2XB4');
+</script>
+
+
+    <title>Redmi AC2100刷写Openwrt教程 | Palpitate</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/css/matery.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/css/my.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/css/reward.css">
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/jquery/jquery-3.6.0.min.js"></script>
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e1b778cf50d44224b4e0a865788ea125"}'></script>
+    <!-- End Cloudflare Web Analytics -->
+    
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Palpitate" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/medias/logo.webp" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Palpitate</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/census">
+          
+          <i class="fas fa-layer-group" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>统计</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-paper-plane" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>时轴</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tag" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-heartbeat" style="zoom: 0.6;"></i>
+      
+      <span>清单</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/List/music">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>音乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/List/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>视频</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/List/friends">
+          
+          <i class="fas fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>友链</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-envelope" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tools" class="waves-effect waves-light">
+      
+      <i class="fas fa-suitcase" style="zoom: 0.6;"></i>
+      
+      <span>工具箱</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/medias/logo.webp" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Palpitate</div>
+        <div class="logo-desc">
+            
+            专注于Web,分享生活,分享知识。
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-archive"></i>
+			
+			归档
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/census " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-layer-group" style="position: absolute;left:50px" ></i>
+			      
+		          <span>统计</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paper-plane" style="position: absolute;left:50px" ></i>
+			      
+		          <span>时轴</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tag" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-heartbeat"></i>
+			
+			清单
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/List/music " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>音乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/List/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>视频</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/List/friends " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:50px" ></i>
+			      
+		          <span>友链</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-envelope"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tools" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-suitcase"></i>
+			
+			工具箱
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/medias/banner/5.webp')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Redmi AC2100刷写Openwrt教程</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">
+                                <span class="chip bg-color">路由器</span>
+                            </a>
+                        
+                            <a href="/tags/AC2100/">
+                                <span class="chip bg-color">AC2100</span>
+                            </a>
+                        
+                            <a href="/tags/Openwrt/">
+                                <span class="chip bg-color">Openwrt</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/" class="post-category">
+                                路由器
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-12-27
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-07-09
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    8 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>​        此教程的书写基于 Redmi AC2100 路由器，并不保证其他路由器可用。推荐使用 Windows 10/11 系统。理论上对其他型号路由器也通用，不过需要改一下固件的型号。本教程参考了多位前辈的文档与教程。</p>
+<h5 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h5><p>1、进行教程操作前，请尽量使用网线与路由器连接，否则可能无法进行部分操作。正常情况是无需设置电脑防火墙和关闭杀毒软件的，但保险起见还是关闭防火墙和杀毒软件，不然刷成砖就后悔了！</p>
+<p>2、教程中涉及文件存储和操作的所有路径和命令，请保证为全英文路径和命令(不得使用中文字符)，使用中文路径可能出现未知错误，导致刷机失败！</p>
+<h4 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h4><h4 id="一-开启SSH"><a href="#一-开启SSH" class="headerlink" title="一.开启SSH"></a>一.开启SSH</h4><p>​        利用官方固件的漏洞，通过Web注入漏洞开启SSH实现刷机，更换至漏洞官方固件版本，降级只需用官方更新方法手动刷入即可。</p>
+<h5 id="1-下载固件"><a href="#1-下载固件" class="headerlink" title="1.下载固件"></a>1.下载固件</h5><p>​		有漏洞固件版本为：AC2100 2.0.7*版本</p>
+<p>官方下载链接：</p>
+<p>红米RM2100：<a target="_blank" rel="noopener" href="http://cdn.cnbj1.fds.api.mi-img.com/xiaoqiang/rom/rm2100/miwifi_rm2100_firmware_d6234_2.0.7.bin">点我下载</a></p>
+<p>小米R2100：<a target="_blank" rel="noopener" href="http://cdn.cnbj1.fds.api.mi-img.com/xiaoqiang/rom/r2100/miwifi_r2100_firmware_4b519_2.0.722.bin">点我下载</a></p>
+<p>其中 miwifi_rm2100开头的是红米的，miwifi_r2100开头的是小米的。</p>
+<h5 id="2-漏洞注入"><a href="#2-漏洞注入" class="headerlink" title="2.漏洞注入"></a>2.漏洞注入</h5><p>​		降级到漏洞版本后，通过下面web命令开启SSH。</p>
+<p>​		在浏览器中使用管理密码登录路由器管理页面(192.168.31.1)，登录后地址栏链接应为:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.31.1/cgi-bin/luci/;stok=&lt;STOK&gt;/web/home#router</span><br></pre></td></tr></tbody></table></figure>
+
+<p>​		这里的关键是**<stok>**号，每台机器不同，甚至每次登录都不同，拷贝下来备用。</stok></p>
+<p>​		在浏览器地址栏中输入以下链接代码，注意替换掉<stok>部分为上面拷贝的：</stok></p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.31.1/cgi-bin/luci/;stok=&lt;STOK&gt;/api/misystem/set_config_iotdev?bssid=Xiaomi&amp;user_id=longdike&amp;ssid=-h%3B%20nvram%20set%20ssh_en%3D1%3B%20nvram%20commit%3B%20sed%20-i%20's%2Fchannel%3D.*%2Fchannel%3D%5C%22debug%5C%22%2Fg'%20%2Fetc%2Finit.d%2Fdropbear%3B%20%2Fetc%2Finit.d%2Fdropbear%20start%3B</span><br></pre></td></tr></tbody></table></figure>
+
+<p>​		返回{“code”:0}即代表成功，其实成不成功都会返回这个：）注意传参顺序及指令前后都要有一个分号，即%3B</p>
+<p>​		如果返回401错误，原因可能是版本不正确或者<stok>值错误或者链接输入不完整等，提示404错误，说明输入地址错误，请检查固件版本或链接地址…</stok></p>
+<p><strong>建议一键注入后需等待一些时间，保证路由器后台能正确处理注入信息后再重启。</strong></p>
+<p>重启即可开启SSH，root密码请自行根据SN计算；不想计算的或不知道怎么计算的，可以看下一步。</p>
+<h5 id="3-更改管理员root密码-可跳过"><a href="#3-更改管理员root密码-可跳过" class="headerlink" title="3.更改管理员root密码 (可跳过)"></a>3.更改管理员root密码 (可跳过)</h5><p>​		执行下面的代码改密码为admin，在浏览器地址栏中输入以下链接代码，注意替换掉<stok>部分。(有时stok值会发生改变，建议重新返回第3步骤复制最新的stok值)</stok></p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.31.1/cgi-bin/luci/;stok=&lt;STOK&gt;/api/misystem/set_config_iotdev?bssid=Xiaomi&amp;user_id=longdike&amp;ssid=-h%3B%20echo%20-e%20'admin%5Cnadmin'%20%7C%20passwd%20root%3B</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="二-刷写Breed"><a href="#二-刷写Breed" class="headerlink" title="二.刷写Breed"></a>二.刷写Breed</h4><p>​		<strong>Breed</strong> 是一个由 <a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/thread-161906-1-1.html">hackpascal</a> 大神自写的与 <strong>U-Boot</strong> 同级的 Bootloader。<strong>Breed</strong> 可以使你方便的更换其他的固件，因为 <strong>Reset</strong> 不会重置 <strong>Breed</strong> 而会重置固件，因此如果你想把 <strong>Openwrt</strong> 换成 <strong>Padavan</strong>，那么只需要 <strong>Reset</strong> 一下，在 <strong>Breed</strong> 重刷一下固件就可以了！</p>
+<p>首先我们下载一下适用于 <strong>Redmi AC2100</strong> 的 <strong>Breed</strong>，<a target="_blank" rel="noopener" href="https://breed.hackpascal.net/breed-mt7621-xiaomi-r3g.bin">点此下载</a></p>
+<p>然后打开<code>cmd</code> 。输入:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.31.1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>​		然后输入 <code>admin</code> ，回车。不出意外的话，我们就成功使用 <code>ssh</code> 登录了路由器中的系统。</p>
+<h5 id="1-本地刷入Breed"><a href="#1-本地刷入Breed" class="headerlink" title="1.本地刷入Breed"></a>1.本地刷入Breed</h5><p>​		按 <code>Ctrl + D</code> 退出登录，输入:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp /path-to-breed root@192.168.31.1:/tmp</span><br></pre></td></tr></tbody></table></figure>
+
+<p>​		这里的 <code>/path-to-breed</code> 代表的是上面下载的 <strong>Breed</strong> 的路径，例如 <code>D:\Downloads\breed-mt7621-xiaomi-r3g.bin</code> ，这条命令即将下载的 <strong>Breed</strong> 传输到了路由器的 <code>/tmp</code> 目录中。</p>
+<p>接下来我们按上述过程重新登录路由器后，输入：</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp</span><br></pre></td></tr></tbody></table></figure>
+
+<p>​		进入路由器中的 <code>/tmp</code> 目录，接下来运行：</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtd -r write breed-mt7621-xiaomi-r3g.bin Bootloader</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h5 id="2-在线刷Breed"><a href="#2-在线刷Breed" class="headerlink" title="2.在线刷Breed"></a>2.在线刷Breed</h5><p>​		输入下面联网刷Breed (r3gbreed通用红米AC2100)：</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp &amp;&amp; wget https://breed.hackpascal.net/breed-mt7621-xiaomi-r3g.bin &amp;&amp; mtd -r write breed-mt7621-xiaomi-r3g.bin Bootloader</span><br></pre></td></tr></tbody></table></figure>
+
+<p>​		备用地址:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp &amp;&amp; wget http://3322d.f3322.net:16999/other/breed/breed-mt7621-xiaomi-r3g.bin &amp;&amp; mtd -r write breed-mt7621-xiaomi-r3g.bin Bootloader</span><br></pre></td></tr></tbody></table></figure>
+
+<p>​		刷入完成，然后等待路由器重启（当电脑获取到ip或者路由只有一个蓝灯亮时，breed引导官方固件成功）。为防止变砖，强烈建议等待5分钟后拔电，用牙签按住<code>reset</code>键再插电，等蓝灯闪烁，松开reset键，浏览器访问<code>192.168.1.1</code>即可进入breedweb界面。</p>
+<p>​		更改环境变量，编缉，新增字段<code>xiaomi.r3g.bootfw</code>，值设置为 <code>2</code>，然后保存。</p>
+<p><img src="https://dl.img.timecdn.cn/2021/12/27/6.jpg!h.webp"></p>
+<hr>
+<h4 id="三-从-breed-刷写固件"><a href="#三-从-breed-刷写固件" class="headerlink" title="三.从 breed 刷写固件"></a>三.从 breed 刷写固件</h4><p>​		首先是下载我们需要的固件，下面推荐几个。也可到恩山论坛自行选择。</p>
+<p>Padavan(HIBOY)固件:<a target="_blank" rel="noopener" href="https://opt.cn2qq.com/padavan/RM2100_3.4.3.9-099.trx">点此下载</a></p>
+<p>Openwrt(<a target="_blank" rel="noopener" href="https://www.right.com.cn/FORUM/thread-4048412-1-1.html">Heroes233</a>):<a target="_blank" rel="noopener" href="https://down.cloudorz.com/Router/LEDE/XiaoMi/XiaoMi-AC2100/">点此下载</a></p>
+<p>Openwrt(官方)：<a target="_blank" rel="noopener" href="https://openwrt.org/zh/toh/views/toh_fwdownload?dataflt%5BBrand*~%5D=xiaomi&amp;dataflt%5BModel*~%5D=Redmi+Router+AC2100%09">点此下载</a></p>
+<h5 id="1-从breed刷入Openwrt底包"><a href="#1-从breed刷入Openwrt底包" class="headerlink" title="1.从breed刷入Openwrt底包"></a>1.从breed刷入Openwrt底包</h5><p><img src="https://dl2.img.timecdn.cn/2021/12/27/7.png!h.webp"></p>
+<h5 id="2-从底包的临时web通过升级的方式刷入openwrt固件"><a href="#2-从底包的临时web通过升级的方式刷入openwrt固件" class="headerlink" title="2.从底包的临时web通过升级的方式刷入openwrt固件"></a>2.从底包的临时web通过升级的方式刷入openwrt固件</h5><p>​		对应的菜单是System -&gt; Backup / Flash Firmware），点击 Flash image… 上传想刷的Openwrt固件</p>
+<p><img src="https://dl3.img.timecdn.cn/2021/12/27/8.png"></p>
+<p><img src="https://dl3.img.timecdn.cn/2021/12/27/9.png"></p>
+<p><img src="https://dl3.img.timecdn.cn/2021/12/27/10.png"></p>
+<p>不要勾选 Keep settings and retain the current configuration，最后点Continue，等几分钟让路由器自己重启。进入新固件。</p>
+<hr>
+<h4 id="四-Openwrt配置"><a href="#四-Openwrt配置" class="headerlink" title="四.Openwrt配置"></a>四.Openwrt配置</h4><h5 id="1-配置-IPv4-网络"><a href="#1-配置-IPv4-网络" class="headerlink" title="1.配置 IPv4 网络"></a>1.配置 IPv4 网络</h5><p>​		首先将网线与路由器的 <code>WAN</code> 口连接。</p>
+<p>​		我们打开 <strong>网络</strong> 中的 <strong>接口</strong> ，然后编辑 <code>WAN</code> 口信息，将协议切换为 <code>PPPoE</code> ，填写用户名和密码，其他一般不用管，直接保存即可。</p>
+<h5 id="2-设置路由器定时重启"><a href="#2-设置路由器定时重启" class="headerlink" title="2.设置路由器定时重启"></a>2.设置路由器定时重启</h5><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># * * * * *  command to execute</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># │ │ │ │ └───── 一周内的天数 (<span class="number">0</span> - <span class="number">6</span>) (<span class="number">0</span> to <span class="number">6</span> are <span class="title class_">Sunday</span> to <span class="title class_">Saturday</span>, or use names; <span class="number">7</span> is <span class="title class_">Sunday</span>, the same <span class="keyword">as</span> <span class="number">0</span>)</span><br><span class="line"># │ │ │ └────────── 月 (<span class="number">1</span> - <span class="number">12</span>)</span><br><span class="line"># │ │ └─────────────── 天 (<span class="number">1</span> - <span class="number">31</span>)</span><br><span class="line"># │ └──────────────────── 小时 (<span class="number">0</span> - <span class="number">23</span>)</span><br><span class="line"># └───────────────────────── min (<span class="number">0</span> - <span class="number">59</span>)</span><br><span class="line"></span><br><span class="line">如</span><br><span class="line">配置入下： 周一至周五</span><br><span class="line">凌晨<span class="number">1.30</span>关闭无线，要睡觉了。睡觉避免辐射</span><br><span class="line">早上<span class="number">7</span>点打开无线，手机要离线下载新闻，上班路上看</span><br><span class="line">早上<span class="number">9</span>点关闭无线</span><br><span class="line">下午<span class="number">16</span>点开启无线等待楼主下班回家</span><br><span class="line">周六至周日</span><br><span class="line">凌晨<span class="number">2</span>点关闭无线睡觉</span><br><span class="line">早上<span class="number">7</span>点开启无线至第二天凌晨<span class="number">2</span>点</span><br><span class="line"></span><br><span class="line"><span class="number">30</span> <span class="number">1</span> * * <span class="number">1</span>-<span class="number">5</span> /etc/wifioff.<span class="property">sh</span></span><br><span class="line"><span class="number">0</span> <span class="number">7</span> * * <span class="number">1</span>-<span class="number">5</span> /etc/wifion.<span class="property">sh</span></span><br><span class="line"><span class="number">0</span> <span class="number">9</span> * * <span class="number">1</span>-<span class="number">5</span> /etc/wifioff.<span class="property">sh</span></span><br><span class="line"><span class="number">0</span> <span class="number">16</span> * * <span class="number">1</span>-<span class="number">5</span> /etc/wifion.<span class="property">sh</span></span><br><span class="line"><span class="number">0</span> <span class="number">2</span> * * <span class="number">6</span>,<span class="number">0</span> /etc/wifioff.<span class="property">sh</span></span><br><span class="line"><span class="number">0</span> <span class="number">7</span> * * <span class="number">6</span>,<span class="number">0</span> /etc/wifion.<span class="property">sh</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="3-定时关闭WIFI"><a href="#3-定时关闭WIFI" class="headerlink" title="3.定时关闭WIFI"></a>3.定时关闭WIFI</h5><p>​		周一至周五的每天早上7:30关闭WIFI：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">30</span> <span class="number">7</span> * * <span class="number">1</span>-<span class="number">5</span> wifi down</span><br></pre></td></tr></tbody></table></figure>
+
+<p>​		周一至周五的每天早上7:30打开WIFI:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">35</span> <span class="number">7</span> * * <span class="number">1</span>-<span class="number">5</span> wifi up</span><br></pre></td></tr></tbody></table></figure>
+
+<p>​		每天下午18:00关闭WIFI，9号、19号、29号除外:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> <span class="number">18</span> <span class="number">1</span>-<span class="number">8</span>,<span class="number">10</span>-<span class="number">18</span>,<span class="number">20</span>-<span class="number">31</span> * * wifi down</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="https://dl.img.timecdn.cn/2021/12/27/11.png!h.webp"></p>
+<h5 id="4-Adguard-home-详细配置"><a href="#4-Adguard-home-详细配置" class="headerlink" title="4.Adguard home 详细配置"></a>4.Adguard home 详细配置</h5><p>​		安装教程已经很多了，在这里就不多说了。只强调一点，ipk安装完成以后，可能会出现无法更新内核的问题。此时需要注释掉防火墙内的默认的DNS解析优先端口。</p>
+<p>​		注释掉这两条规则，注释之后为：<br>​                </p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#iptables -t nat -A <span class="variable constant_">PREROUTING</span> -p udp --dport <span class="number">53</span> -j <span class="variable constant_">REDIRECT</span> --to-ports <span class="number">53</span></span><br><span class="line">#iptables -t nat -A <span class="variable constant_">PREROUTING</span> -p tcp --dport <span class="number">53</span> -j <span class="variable constant_">REDIRECT</span> --to-ports <span class="number">53</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="5-打开”服务-–-AdGuard-Home”"><a href="#5-打开”服务-–-AdGuard-Home”" class="headerlink" title="5.打开”服务 – AdGuard Home”"></a>5.打开”服务 – AdGuard Home”</h5><ul>
+<li><p>更新核心版本，如不能更新可下载内核自行更新</p>
+</li>
+<li><p>用 WinSCP 打开路由器，将内核放到 /usr/bin/AdGuardHome 路径下！</p>
+</li>
+<li><p>刷新浏览器即可看到 核心版本</p>
+</li>
+</ul>
+<p>​		勾选启用，将重定向设置为 作为 dnsmasq 的上游服务器</p>
+<p><img src="https://dl2.img.timecdn.cn/2021/12/27/12.webp"></p>
+<h5 id="5-AdGuard-Home-页面设置"><a href="#5-AdGuard-Home-页面设置" class="headerlink" title="5.AdGuard Home 页面设置"></a>5.AdGuard Home 页面设置</h5><p>​		1.点击 AdGuardHome Web:3000 跳转 AdGuard Home 管理页面</p>
+<p><img src="https://dl.img.timecdn.cn/2021/12/27/13.png!h.webp"></p>
+<p>​		网页管理界面 - 监听接口 - 端口默认为 80，随意设置，只要没被占用即可。</p>
+<p>​		DNS 服务器 - 监听接口 - 端口默认为 53，随意设置，只要没被占用即可。</p>
+<p><img src="https://dl.img.timecdn.cn/2021/12/27/14.png!h.webp"></p>
+<p>​		设置登陆 AdGuard Home 管理页面的用户名和密码</p>
+<p><img src="https://dl.img.timecdn.cn/2021/12/27/15.png!h.webp"></p>
+<p>​		以上设置完成，直接下一步即可</p>
+<p><img src="https://dl2.img.timecdn.cn/2021/12/27/16.png!h.webp"></p>
+<p>​		打开 设置–常规设置 如图设置！（记得保存）</p>
+<p><img src="https://dl2.img.timecdn.cn/2021/12/27/17.webp"></p>
+<p>打开 设置–DNS 设置</p>
+<ul>
+<li><p>上游 DNS 服务器，第一个 IP 设置成你的运营商 DNS，后面 3 个可以如图填写！</p>
+</li>
+<li><p>Bootstrap DNS 服务器，设置成你的运营商 DNS！</p>
+</li>
+<li><p>DNS 服务设定，速度限制 填写 0 为不限制！</p>
+</li>
+<li><p>除了 202.98.192.67 替换成你的运营商 DNS，其他看图设置即可</p>
+<p><img src="https://dl3.img.timecdn.cn/2021/12/27/18.webp"></p>
+</li>
+</ul>
+<p>打开 过滤器–DNS 封锁</p>
+<ul>
+<li><p>添加阻止列表并启用</p>
+</li>
+<li><p>提供几个比较好用的规则</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://anti-ad.net/">anti-AD</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/halflife/list/issues/I1CV06">halflife</a></p>
+<p><a target="_blank" rel="noopener" href="https://easylist.to/easylist/easylist.txt">Easylist</a></p>
+<p><a target="_blank" rel="noopener" href="https://easylist-downloads.adblockplus.org/easylistchina.txt">Easylistchina</a></p>
+<p><img src="https://dl3.img.timecdn.cn/2021/12/27/19.webp"></p>
+<hr>
+<h4 id="五-路由器指示灯状态说明"><a href="#五-路由器指示灯状态说明" class="headerlink" title="五.路由器指示灯状态说明"></a>五.路由器指示灯状态说明</h4><p>1.蓝灯长亮：工作正常</p>
+<p>2.蓝灯闪烁：刷机成功（需要断电重启，注意路由断电后请等待10s以上再通电）</p>
+<p>3.橙灯长亮：正在启动</p>
+<p>4.橙灯闪烁：进入刷机流程或系统升级中（该过程不要断电）</p>
+<p>5.红灯长亮：系统故障</p>
+<p>6.红灯闪烁：刷机失败</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">因是</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://blog.yncn.tk/posts/d224e079.html">http://blog.yncn.tk/posts/d224e079.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">因是</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">
+                                    <span class="chip bg-color">路由器</span>
+                                </a>
+                            
+                                <a href="/tags/AC2100/">
+                                    <span class="chip bg-color">AC2100</span>
+                                </a>
+                            
+                                <a href="/tags/Openwrt/">
+                                    <span class="chip bg-color">Openwrt</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo,twitter,facebook,google,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/medias/reward/alipay.webp" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/medias/reward/wechat.webp" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .twikoo-card {
+        margin: 1.5rem auto;
+    }
+
+    .twikoo-card .card-content {
+        padding: 20px;
+    }
+
+    #tcomments textarea {
+        box-sizing: border-box;
+        background: url("/") 100% 100% no-repeat;
+    }
+
+    #tcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #tcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #tcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #tcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #tcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #tcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #tcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #tcomments ul li {
+        list-style-type: disc;
+    }
+
+    #tcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #tcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #tcomments table,
+    th,
+    td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #tcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #tcomments table td {
+        min-width: 80px;
+    }
+
+    #tcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #tcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #tcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #tcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #tcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #tcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #tcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #tcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #tcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #tcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #tcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #tcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #tcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #tcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #tcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #tcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #tcomments dfn {
+        font-style: italic;
+    }
+
+    #tcomments small {
+        font-size: 85%;
+    }
+
+    #tcomments cite {
+        font-style: normal;
+    }
+
+    #tcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #tcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #tcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #tcomments table td {
+        min-width: 80px;
+    }
+
+    #tcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card twikoo-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div class="card-content" style="display: grid">
+        <div id="tcomments"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/twikoo/twikoo.all.min.js"></script>
+<script>
+    twikoo.init({
+        envId: 'https://twikoo-one-swart.vercel.app',
+        el: '#tcomments',
+        region: '',
+        path: ''
+    }).then(function () {
+        var tkInputs = document.querySelector('#twikoo').getElementsByTagName('input');
+        for (var tkInputsIndex = 0; tkInputsIndex < tkInputs.length; tkInputsIndex++) {
+            if (tkInputs[tkInputsIndex]) {
+                tkInputs[tkInputsIndex].classList.add('browser-default');
+            }
+        }
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/a839bc6b.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/medias/banner/2.webp" class="responsive-img" alt="使用 GitHub Actions 云编译OpenWrt">
+                        
+                        <span class="card-title">使用 GitHub Actions 云编译OpenWrt</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/GitHub/" class="post-category">
+                                    GitHub
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/GitHub/">
+                        <span class="chip bg-color">GitHub</span>
+                    </a>
+                    
+                    <a href="/tags/Openwrt/">
+                        <span class="chip bg-color">Openwrt</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/ca093fb9.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/medias/banner/1.webp" class="responsive-img" alt="Onedrive目录程序——OneManager搭建详细教程">
+                        
+                        <span class="card-title">Onedrive目录程序——OneManager搭建详细教程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BD%91%E7%9B%98/" class="post-category">
+                                    网盘
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Onedrive/">
+                        <span class="chip bg-color">Onedrive</span>
+                    </a>
+                    
+                    <a href="/tags/OneManager/">
+                        <span class="chip bg-color">OneManager</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BD%91%E7%9B%98/">
+                        <span class="chip bg-color">网盘</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Palpitate<br />'
+            + '文章作者: 因是<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="tencent"
+                   type="playlist"
+                   id="1018898283"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2023</span>
+            
+            <a href="/about" target="_blank">因是</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">10.9k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "12";
+                        var startDate = "10";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/byncn/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:byn@yncn.eu.org" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?cad13a0c048a9156fd271a9fd5d1ab04";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/byncn/cdn@4.1/source/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

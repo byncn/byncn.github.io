@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Palpitate</title>
+  
+  <subtitle>风无定相，云无常态。</subtitle>
+  <link href="http://blog.yncn.tk/atom.xml" rel="self"/>
+  
+  <link href="http://blog.yncn.tk/"/>
+  <updated>2023-08-01T14:16:45.154Z</updated>
+  <id>http://blog.yncn.tk/</id>
+  
+  <author>
+    <name>因是</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo-Matery主题配置Twikoo评论系统</title>
+    <link href="http://blog.yncn.tk/posts/d2ab7f2a.html"/>
+    <id>http://blog.yncn.tk/posts/d2ab7f2a.html</id>
+    <published>2023-08-01T12:49:33.000Z</published>
+    <updated>2023-08-01T14:16:45.154Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Twikoo是一个简洁、安全、免费的静态网站评论系统。有部署有数种方式，其他部署方式要么收费，要么需要服务器，本次选择Vercel</summary>
+        
+      
+    
+    
+    
+    <category term="Blog" scheme="http://blog.yncn.tk/categories/Blog/"/>
+    
+    
+    <category term="Matery" scheme="http://blog.yncn.tk/tags/Matery/"/>
+    
+    <category term="Blog" scheme="http://blog.yncn.tk/tags/Blog/"/>
+    
+    <category term="Twikoo" scheme="http://blog.yncn.tk/tags/Twikoo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 GitHub Actions 云编译OpenWrt</title>
+    <link href="http://blog.yncn.tk/posts/a839bc6b.html"/>
+    <id>http://blog.yncn.tk/posts/a839bc6b.html</id>
+    <published>2022-01-15T14:45:06.000Z</published>
+    <updated>2022-07-09T08:36:09.586Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;​		&lt;a href=&quot;https://docs.github.com/cn/actions&quot;&gt;GitHub Actions&lt;/a&gt; 是</summary>
+        
+      
+    
+    
+    
+    <category term="GitHub" scheme="http://blog.yncn.tk/categories/GitHub/"/>
+    
+    
+    <category term="GitHub" scheme="http://blog.yncn.tk/tags/GitHub/"/>
+    
+    <category term="Openwrt" scheme="http://blog.yncn.tk/tags/Openwrt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redmi AC2100刷写Openwrt教程</title>
+    <link href="http://blog.yncn.tk/posts/d224e079.html"/>
+    <id>http://blog.yncn.tk/posts/d224e079.html</id>
+    <published>2021-12-27T09:39:32.000Z</published>
+    <updated>2022-07-09T08:38:57.177Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;​        此教程的书写基于 Redmi AC2100 路由器，并不保证其他路由器可用。推荐使用 Windows 10/11</summary>
+        
+      
+    
+    
+    
+    <category term="路由器" scheme="http://blog.yncn.tk/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    
+    
+    <category term="路由器" scheme="http://blog.yncn.tk/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    
+    <category term="AC2100" scheme="http://blog.yncn.tk/tags/AC2100/"/>
+    
+    <category term="Openwrt" scheme="http://blog.yncn.tk/tags/Openwrt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Onedrive目录程序——OneManager搭建详细教程</title>
+    <link href="http://blog.yncn.tk/posts/ca093fb9.html"/>
+    <id>http://blog.yncn.tk/posts/ca093fb9.html</id>
+    <published>2021-12-16T13:17:35.000Z</published>
+    <updated>2022-07-09T08:39:17.213Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;首先感谢&lt;a href=&quot;https://github.com/qkqpttgf&quot;&gt;qkqpttgf&lt;/a&gt;这位大佬开发的&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="网盘" scheme="http://blog.yncn.tk/categories/%E7%BD%91%E7%9B%98/"/>
+    
+    
+    <category term="Onedrive" scheme="http://blog.yncn.tk/tags/Onedrive/"/>
+    
+    <category term="OneManager" scheme="http://blog.yncn.tk/tags/OneManager/"/>
+    
+    <category term="网盘" scheme="http://blog.yncn.tk/tags/%E7%BD%91%E7%9B%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 jsDelivr CDN加速 GitHub Pages 博客的静态资源</title>
+    <link href="http://blog.yncn.tk/posts/bf2f1bbe.html"/>
+    <id>http://blog.yncn.tk/posts/bf2f1bbe.html</id>
+    <published>2021-12-16T11:02:38.000Z</published>
+    <updated>2022-07-09T08:39:32.437Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;CDN加速&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;​		CDN的全称是Content Delivery</summary>
+        
+      
+    
+    
+    
+    <category term="CDN" scheme="http://blog.yncn.tk/categories/CDN/"/>
+    
+    
+    <category term="jsDelivr" scheme="http://blog.yncn.tk/tags/jsDelivr/"/>
+    
+    <category term="GitHub" scheme="http://blog.yncn.tk/tags/GitHub/"/>
+    
+    <category term="CDN" scheme="http://blog.yncn.tk/tags/CDN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+Matery-主题个性化修改二</title>
+    <link href="http://blog.yncn.tk/posts/a1c374f3.html"/>
+    <id>http://blog.yncn.tk/posts/a1c374f3.html</id>
+    <published>2021-12-12T15:05:59.000Z</published>
+    <updated>2022-07-09T08:35:40.881Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;一-添加动态诗词&quot;&gt;&lt;a href=&quot;#一-添加动态诗词&quot; class=&quot;headerlink&quot; title=&quot;一.添加动态诗词&quot;&gt;&lt;/a&gt;一.添加动态诗词&lt;/h4&gt;&lt;p&gt;​		打开</summary>
+        
+      
+    
+    
+    
+    <category term="Blog" scheme="http://blog.yncn.tk/categories/Blog/"/>
+    
+    
+    <category term="Hexo" scheme="http://blog.yncn.tk/tags/Hexo/"/>
+    
+    <category term="Matery" scheme="http://blog.yncn.tk/tags/Matery/"/>
+    
+    <category term="Blog" scheme="http://blog.yncn.tk/tags/Blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+Matery-主题个性化修改一</title>
+    <link href="http://blog.yncn.tk/posts/9a435a5a.html"/>
+    <id>http://blog.yncn.tk/posts/9a435a5a.html</id>
+    <published>2021-12-12T11:14:25.000Z</published>
+    <updated>2023-08-01T12:55:09.512Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;一-修改主题的-logo-图和-favicon-图标&quot;&gt;&lt;a href=&quot;#一-修改主题的-logo-图和-favicon-图标&quot; class=&quot;headerlink&quot; title=&quot;一.修改主题的 logo 图和 favicon 图标&quot;&gt;&lt;/a&gt;一.修改主题的</summary>
+        
+      
+    
+    
+    
+    <category term="Blog" scheme="http://blog.yncn.tk/categories/Blog/"/>
+    
+    
+    <category term="Hexo" scheme="http://blog.yncn.tk/tags/Hexo/"/>
+    
+    <category term="Matery" scheme="http://blog.yncn.tk/tags/Matery/"/>
+    
+    <category term="Blog" scheme="http://blog.yncn.tk/tags/Blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+Matery主题基础修改</title>
+    <link href="http://blog.yncn.tk/posts/588ed204.html"/>
+    <id>http://blog.yncn.tk/posts/588ed204.html</id>
+    <published>2021-12-12T08:12:21.000Z</published>
+    <updated>2022-07-09T08:40:32.979Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;请根据个人需要添加不同的插件及功能&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​		⛔首先声明一下，一定要分清什么是站点配置文件，什么是主题文件，站点配置文件的为&lt;code&gt;Hexo根目录&lt;/code&gt;下的&lt;code&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="Blog" scheme="http://blog.yncn.tk/categories/Blog/"/>
+    
+    
+    <category term="Hexo" scheme="http://blog.yncn.tk/tags/Hexo/"/>
+    
+    <category term="Matery" scheme="http://blog.yncn.tk/tags/Matery/"/>
+    
+    <category term="Blog" scheme="http://blog.yncn.tk/tags/Blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>原生安卓WiFi信号去叹号去叉教程5.0-Android P</title>
+    <link href="http://blog.yncn.tk/posts/91851bc6.html"/>
+    <id>http://blog.yncn.tk/posts/91851bc6.html</id>
+    <published>2021-12-11T08:52:16.000Z</published>
+    <updated>2022-07-09T08:19:16.206Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;原生安卓WiFi信号叹号和叉的原因&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;  Captive</summary>
+        
+      
+    
+    
+    
+    <category term="安卓" scheme="http://blog.yncn.tk/categories/%E5%AE%89%E5%8D%93/"/>
+    
+    
+    <category term="安卓" scheme="http://blog.yncn.tk/tags/%E5%AE%89%E5%8D%93/"/>
+    
+    <category term="修复" scheme="http://blog.yncn.tk/tags/%E4%BF%AE%E5%A4%8D/"/>
+    
+  </entry>
+  
+</feed>
